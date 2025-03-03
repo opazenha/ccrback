@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: 'postgres:alpine'
+    environment:
+      - 'POSTGRES_DB=ccr_db'
+      - 'POSTGRES_PASSWORD=JESUS'
+      - 'POSTGRES_USER=ccradmin'
+    ports:
+      - '5432'
+
+  pgadmin:
+    image: 'dpage/pgadmin4:latest'
+    ports:
+      - '5050:80'
+    environment:
+      - 'PGADMIN_DEFAULT_EMAIL=admin@admin.com'
+      - 'PGADMIN_DEFAULT_PASSWORD=admin'
+    depends_on:
+      - 'postgres'
